@@ -1,16 +1,18 @@
 import { getLatestDevices } from "@/actions/get-recommended";
+import { shuffle } from "@/lib/utils";
 import Image from "next/image";
 
 export async function RenderLatestDevices() {
   const latest = await getLatestDevices();
+  const shuffleItems = shuffle(latest);
 
   return (
-    <ul
+    <div
       id="latest-devices-scroll"
-      className="mx-auto max-w-sm md:max-w-6xl flex flex-row gap-4 overflow-auto"
+      className="mx-auto max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-6xl flex flex-row gap-4 overflow-auto"
     >
-      {latest.map((item: RecommendedDevice) => (
-        <li
+      {shuffleItems.map((item: RecommendedDevice) => (
+        <div
           className="flex-grow-0 flex-shrink-0 basis-44 w-44 h-44 rounded-md border"
           key={item.key}
         >
@@ -26,8 +28,8 @@ export async function RenderLatestDevices() {
               {item.device_name}
             </p>
           </div>
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }

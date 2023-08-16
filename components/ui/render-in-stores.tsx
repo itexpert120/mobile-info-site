@@ -1,15 +1,17 @@
 import { getShelfDevices } from "@/actions/get-recommended";
+import { shuffle } from "@/lib/utils";
 import Image from "next/image";
 
 export async function RenderShelfDevices() {
   const shelf = await getShelfDevices();
+  const shuffledItems = shuffle(shelf);
 
   return (
     <div
       id="inshelf-devices-scroll"
-      className="mx-auto max-w-sm md:max-w-6xl flex flex-row gap-4 overflow-auto"
+      className="mx-auto max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-6xl flex flex-row gap-4 overflow-auto"
     >
-      {shelf.map((item: RecommendedDevice) => (
+      {shuffledItems.map((item: RecommendedDevice) => (
         <div
           className="flex-grow-0 flex-shrink-0 basis-44 w-44 h-44 rounded-md border"
           key={item.key}

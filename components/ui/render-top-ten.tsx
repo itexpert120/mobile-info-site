@@ -13,7 +13,7 @@ export async function RenderTopTen() {
           </span>{" "}
           <div className="flex items-center gap-x-2">
             <p className="ml-4 font-semibold">{item.device_name}</p>
-            <Badge variant="default" className="cursor-default">
+            <Badge variant="default" className="cursor-default basis-auto">
               {item.daily_hits} Hits
             </Badge>
           </div>
