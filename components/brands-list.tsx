@@ -5,14 +5,14 @@ import { FiSmartphone } from "react-icons/fi";
 
 import { getTopBrands } from "@/actions/get-brands";
 import Link from "next/link";
-import { Skeleton } from "./ui/skeleton";
+import BrandsLoader from "./ui/brands-loader";
 export default async function BrandsList() {
   return (
     <div className="my-8 flex flex-col gap-y-4">
       <h2 className="font-bold text-3xl">Top Brands</h2>
       <div>
         <ul className="flex flex-col gap-y-2 max-w-[256px]">
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<BrandsLoader />}>
             <RenderBrandsList />
           </Suspense>
           <li className="border p-2 rounded-md shadow-sm bg-blue-600 hover:bg-blue-700 hover:shadow-lg transition text-white group">
@@ -29,22 +29,22 @@ export default async function BrandsList() {
   );
 }
 
-export function Loader() {
-  const SKELETON = ["...", "...", "...", "...", "...", "..."];
-  return SKELETON.map((item, index) => (
-    <li
-      key={index}
-      className="border p-2 rounded-md shadow-sm hover:shadow-lg transition"
-    >
-      <Link href="#">
-        <div className="flex flex-row gap-x-2 items-center">
-          <FiSmartphone className="text-xl" />
-          <Skeleton className="w-[128px] h-[24px] rounded-md" />
-        </div>
-      </Link>
-    </li>
-  ));
-}
+// export function Loader() {
+//   const SKELETON = ["...", "...", "...", "...", "...", "..."];
+//   return SKELETON.map((item, index) => (
+//     <li
+//       key={index}
+//       className="border p-2 rounded-md shadow-sm hover:shadow-lg transition"
+//     >
+//       <Link href="#">
+//         <div className="flex flex-row gap-x-2 items-center">
+//           <FiSmartphone className="text-xl" />
+//           <Skeleton className="w-[128px] h-[24px] rounded-md" />
+//         </div>
+//       </Link>
+//     </li>
+//   ));
+// }
 
 export async function RenderBrandsList() {
   const topBrands: Brand[] = await getTopBrands();

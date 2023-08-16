@@ -8,14 +8,7 @@ export async function getAllBrands(): Promise<Brand[]> {
   return response.data;
 }
 
-const TOP_BRANDS = [
-  "Apple",
-  "Samsung",
-  "OnePlus",
-  "Huawei",
-  "Xiaomi",
-  "Google",
-];
+const TOP_BRANDS = ["Samsung", "Apple", "Xiaomi", "Google", "OnePlus", "Oppo"];
 
 export async function getTopBrands() {
   const { data: response } = await axios.get(baseURL);
