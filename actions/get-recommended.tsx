@@ -10,20 +10,20 @@ export default async function getRecommended() {
 
 export async function getLatestDevices(): Promise<RecommendedDevice[]> {
   const { recommended_1: latestDevices } = await getRecommended();
-  return latestDevices.data;
+  return latestDevices.data as RecommendedDevice[];
 }
 
 export async function getShelfDevices(): Promise<RecommendedDevice[]> {
   const { recommended_2: shelfDevices } = await getRecommended();
-  return shelfDevices.data;
+  return shelfDevices.data as RecommendedDevice[];
 }
 
 export async function getDailyInterests(): Promise<HitsDevice[]> {
   const { recommended_3: dailyInterests } = await getRecommended();
-  return dailyInterests.data;
+  return dailyInterests.data as HitsDevice[];
 }
 
 export async function getTopTen(): Promise<HitsDevice[]> {
   const { recommended_4: topTen } = await getRecommended();
-  return topTen.data;
+  return topTen.data as HitsDevice[];
 }
