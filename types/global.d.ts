@@ -19,4 +19,10 @@ declare global {
     daily_hits: number;
     key: string;
   }
+
+  interface DeviceList {
+    device_name: string;
+    device_image: string;
+    key: string;
+  }
 }

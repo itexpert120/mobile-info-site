@@ -9,7 +9,7 @@ export async function RenderLatestDevices() {
   return (
     <div
       id="latest-devices-scroll"
-      className="mx-auto max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-6xl flex flex-row gap-4 overflow-auto"
+      className="mx-auto max-w-full flex flex-row gap-4 overflow-auto"
     >
       {shuffleItems.map((item: RecommendedDevice) => (
         <div
