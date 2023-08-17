@@ -8,7 +8,7 @@ export default async function Home() {
     <main className="max-w-sm sm:max-w-6xl mx-auto">
       <Heading title="Top Brands" />
       <div className="flex flex-col-reverse md:flex-row items-center gap-x-4">
-        <div className="min-w-[256px] hidden md:block">
+        <div className="md:min-w-[256px] min-w-full">
           <BrandsList />
         </div>
         <div className="flex-1 md:flex-auto w-full flex items-center justify-center">

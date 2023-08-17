@@ -10,7 +10,7 @@ export default async function BrandsList() {
   return (
     <div className="flex flex-col gap-y-4">
       <div>
-        <ul className="flex flex-col gap-y-2 max-w-[256px]">
+        <ul className="flex flex-col gap-y-2 max-w-full md:max-w-[256px]">
           <Suspense fallback={<BrandsLoader />}>
             <RenderBrandsList />
           </Suspense>
