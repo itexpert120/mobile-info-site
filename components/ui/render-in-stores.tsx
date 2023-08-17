@@ -1,6 +1,6 @@
 import { getShelfDevices } from "@/actions/get-recommended";
 import { shuffle } from "@/lib/utils";
-import Image from "next/image";
+// import Image from "next/image";
 
 export async function RenderShelfDevices() {
   const shelf = await getShelfDevices();
@@ -17,11 +17,9 @@ export async function RenderShelfDevices() {
           key={item.key}
         >
           <div className="flex flex-col items-center justify-center w-full h-full">
-            <Image
+            <img
               src={item.device_image}
-              height={100}
-              width={100}
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", width: "100px", height: "100px" }}
               alt={item.key}
             />
             <p className="text-sm mt-1 font-semibold text-center">

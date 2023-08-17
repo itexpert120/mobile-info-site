@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 
 interface BannerProps {
   imgSrc: string;
@@ -10,13 +10,10 @@ export default function Banner({ imgSrc }: BannerProps) {
       <h1 className="z-50 absolute bottom-5 text-white font-bold text-xl sm:text-2xl md:text-3xl bg-black px-8 py-4 rounded-lg">
         Latest Smartphone Info
       </h1>
-      <Image
+      <img
         src={imgSrc}
-        width={720}
-        height={405}
         alt="iPhone 14"
-        priority
-        className="rounded-md aspect-video object-cover shadow-md mx-auto md:mx-0"
+        className="w-[720px] h-[405px] rounded-md aspect-video object-cover shadow-md mx-auto md:mx-0"
       />
     </div>
   );

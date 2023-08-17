@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 
 import { GetBrandDevices } from "@/actions/get-devices";
 import Pagination from "./pagination";
@@ -26,11 +26,13 @@ export default async function RenderAllDevices({
               key={device.key}
             >
               <div className="flex flex-col items-center justify-center w-full h-full">
-                <Image
+                <img
                   src={device.device_image}
-                  height={100}
-                  width={100}
-                  style={{ objectFit: "cover" }}
+                  style={{
+                    objectFit: "cover",
+                    width: "100px",
+                    height: "100px",
+                  }}
                   alt={device.key}
                 />
                 <p className="text-sm mt-1 font-semibold text-center">
