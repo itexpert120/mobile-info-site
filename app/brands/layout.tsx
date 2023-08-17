@@ -5,8 +5,8 @@ interface BrandsLayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: "All Brands",
-  description: "All Brands for Smartphone Devices",
+  title: "All Devices",
+  description: "All devices",
 };
 
 export default function BrandsLayout({ children }: BrandsLayoutProps) {

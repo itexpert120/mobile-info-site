@@ -18,7 +18,8 @@ export default function Pagination({
         href={page - 1 === 0 ? "#" : `/brands/${brand_id}/${page - 1}`}
         className={cn(
           "flex items-center justify-center px-3 h-8 mr-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white",
-          page - 1 === 0 && "cursor-not-allowed bg-red-500 text-white"
+          page - 1 === 0 &&
+            "cursor-not-allowed bg-red-500 text-white hover:bg-red-500 hover:text-white"
         )}
       >
         <svg
@@ -39,10 +40,11 @@ export default function Pagination({
         Previous
       </Link>
       <Link
-        href={page + 1 <= total_page ? `/brands/${brand_id}/${page - 1}` : "#"}
+        href={page + 1 <= total_page ? `/brands/${brand_id}/${page + 1}` : "#"}
         className={cn(
           "flex items-center justify-center px-3 h-8 mr-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white",
-          page === total_page && "cursor-not-allowed bg-red-500 text-white"
+          page === total_page &&
+            "cursor-not-allowed bg-red-500 text-white hover:bg-red-500 hover:text-white"
         )}
       >
         Next
