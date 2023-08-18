@@ -13,7 +13,7 @@ export default function Banner({ imgSrc }: BannerProps) {
       <img
         src={imgSrc}
         alt="iPhone 14"
-        className="w-[720px] h-[405px] rounded-md aspect-video object-cover shadow-md mx-auto md:mx-0"
+        className="w-[720px] h-auto rounded-md aspect-video object-cover shadow-md mx-auto md:mx-0"
       />
     </div>
   );

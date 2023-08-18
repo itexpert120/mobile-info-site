@@ -2,8 +2,6 @@ import { getTopTen } from "@/actions/get-recommended";
 import { Badge } from "./badge";
 import Link from "next/link";
 
-import { BiLink } from "react-icons/bi";
-
 export async function RenderTopTen() {
   const latest = await getTopTen();
 
@@ -15,14 +13,10 @@ export async function RenderTopTen() {
             {item.no}
           </span>{" "}
           <div className="flex items-center gap-x-2">
-            <Link
-              href={`/device/${item.key}`}
-              className="flex items-center gap-x-2"
-            >
+            <Link href={`/device/${item.key}`}>
               <p className="ml-4 font-semibold group-hover:text-sky-600 cursor-pointer transition">
                 {item.device_name}
               </p>
-              <BiLink clasName="group-hover:text-sky-600 transition" />
             </Link>
             <Badge variant="default" className="cursor-default basis-auto">
               {item.daily_hits} Hits
