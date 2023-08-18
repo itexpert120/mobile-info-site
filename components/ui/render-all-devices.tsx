@@ -28,11 +28,7 @@ export default async function RenderAllDevices({
               <div className="flex flex-col items-center justify-center w-full h-full">
                 <img
                   src={device.device_image}
-                  style={{
-                    objectFit: "cover",
-                    width: "100px",
-                    height: "100px",
-                  }}
+                  style={{ objectFit: "cover", width: "100px", height: "auto" }}
                   alt={device.key}
                 />
                 <p className="text-sm mt-1 font-semibold text-center">

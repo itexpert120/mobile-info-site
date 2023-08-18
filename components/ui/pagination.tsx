@@ -1,5 +1,8 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface PaginationProps {
   total_page: number;
@@ -12,10 +15,26 @@ export default function Pagination({
   page,
   brand_id,
 }: PaginationProps) {
+  const router = useRouter();
+
+  const handleBack = () => {
+    if (page - 1 === 0) {
+      return;
+    }
+    router.push(`/brands/${brand_id}/${page - 1}`);
+  };
+
+  const handleForward = () => {
+    if (page + 1 === total_page) {
+      return;
+    }
+    router.push(`/brands/${brand_id}/${page + 1}`);
+  };
   return (
     <div className="flex">
-      <Link
-        href={page - 1 === 0 ? "#" : `/brands/${brand_id}/${page - 1}`}
+      <button
+        disabled={page - 1 === 0}
+        onClick={handleBack}
         className={cn(
           "flex items-center justify-center px-3 h-8 mr-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white",
           page - 1 === 0 &&
@@ -38,9 +57,10 @@ export default function Pagination({
           />
         </svg>
         Previous
-      </Link>
-      <Link
-        href={page + 1 <= total_page ? `/brands/${brand_id}/${page + 1}` : "#"}
+      </button>
+      <button
+        onClick={handleForward}
+        disabled={page === total_page}
         className={cn(
           "flex items-center justify-center px-3 h-8 mr-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white",
           page === total_page &&
@@ -63,7 +83,7 @@ export default function Pagination({
             d="M1 5h12m0 0L9 1m4 4L9 9"
           />
         </svg>
-      </Link>
+      </button>
     </div>
   );
 }

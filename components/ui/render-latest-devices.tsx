@@ -19,7 +19,7 @@ export async function RenderLatestDevices() {
           <div className="flex flex-col items-center justify-center w-full h-full">
             <img
               src={item.device_image}
-              style={{ objectFit: "cover", width: "100px", height: "100px" }}
+              style={{ objectFit: "cover", width: "100px", height: "auto" }}
               alt={item.key}
             />
             <p className="text-sm mt-1 font-semibold text-center">

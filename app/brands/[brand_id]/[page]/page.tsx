@@ -12,34 +12,22 @@ export default async function BrandDevicePage({
   const brand_id = parseInt(params.brand_id);
   const page = parseInt(params.page);
 
+  const brandDetails = await GetBrandDetails(brand_id);
   return (
     <div>
-      <Suspense fallback={<Heading title="..." showBackArrow />}>
-        <RenderHeading brand_id={brand_id} />
-      </Suspense>
+      <Heading
+        title={
+          brandDetails
+            ? brandDetails.brand_name + " Devices"
+            : "Error: Page not found"
+        }
+        showBackArrow
+        back_url="/brands"
+      />
 
       <Suspense fallback={<AllDevicesSkeleton />}>
         <RenderAllDevices brand_id={brand_id} page={page} />
       </Suspense>
     </div>
-  );
-}
-
-interface RenderHeadingProps {
-  brand_id: number;
-}
-
-async function RenderHeading({ brand_id }: RenderHeadingProps) {
-  const brandDetails = await GetBrandDetails(brand_id);
-  return (
-    <Heading
-      title={
-        brandDetails
-          ? brandDetails.brand_name + " Devices"
-          : "Error: Page not found"
-      }
-      showBackArrow
-      back_url="/brands"
-    />
   );
 }
