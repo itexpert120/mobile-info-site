@@ -6,7 +6,7 @@ interface DeviceBoxProps {
 
 export function DeviceBox({ item }: DeviceBoxProps) {
   return (
-    <div className="flex-grow-0 flex-shrink-0 basis-44 w-44 h-44 rounded-md border group">
+    <div className="flex-grow-0 flex-shrink-0 basis-40 w-40 h-44 sm:basis-44 sm:w-44 sm:h-44 rounded-md border group">
       <Link href={`/device/${item.key}`}>
         <div className="flex flex-col items-center justify-center w-full h-full">
           <img
