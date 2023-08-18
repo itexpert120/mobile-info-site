@@ -1,3 +1,5 @@
+import { FiCamera, FiCpu, FiInfo, FiSmartphone } from "react-icons/fi";
+
 interface DeviceHeroProps {
   deviceDetails: DeviceDetails;
 }
@@ -10,6 +12,7 @@ export default function DeviceHeroDetails({ deviceDetails }: DeviceHeroProps) {
       </div>
       <div className="grid grid-cols-2 gap-4">
         <div>
+          <FiSmartphone />
           <h2 className="font-bold text-lg">Display</h2>
           <p>
             <span className="font-semibold">Size:</span>{" "}
@@ -21,6 +24,7 @@ export default function DeviceHeroDetails({ deviceDetails }: DeviceHeroProps) {
           </p>
         </div>
         <div>
+          <FiCamera />
           <h2 className="font-bold text-lg">Camera</h2>
           <p>
             <span className="font-semibold">Resolution:</span>{" "}
@@ -31,6 +35,7 @@ export default function DeviceHeroDetails({ deviceDetails }: DeviceHeroProps) {
           </p>
         </div>
         <div>
+          <FiCpu />
           <h2 className="font-bold text-lg">Internals</h2>
           <p>
             <span className="font-semibold">RAM:</span> {deviceDetails.ram}
@@ -53,6 +58,7 @@ export default function DeviceHeroDetails({ deviceDetails }: DeviceHeroProps) {
           </p>
         </div>
         <div>
+          <FiInfo />
           <h2 className="font-bold text-lg">More Information</h2>
           <p>
             <span className="font-semibold">Release:</span>{" "}
