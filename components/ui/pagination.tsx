@@ -17,6 +17,9 @@ export default function Pagination({
 }: PaginationProps) {
   const router = useRouter();
 
+  router.prefetch(`/brands/${brand_id}/${page - 1}`);
+  router.prefetch(`/brands/${brand_id}/${page + 1}`);
+
   const handleBack = () => {
     if (page - 1 === 0) {
       return;

@@ -13,6 +13,10 @@ export default async function BrandDevicePage({
   const page = parseInt(params.page);
 
   const brandDetails = await GetBrandDetails(brand_id);
+
+  if (!brandDetails) {
+    return "No Found";
+  }
   return (
     <div>
       <Heading
@@ -26,7 +30,7 @@ export default async function BrandDevicePage({
       />
 
       <Suspense fallback={<AllDevicesSkeleton />}>
-        <RenderAllDevices brand_id={brand_id} page={page} />
+        <RenderAllDevices filteredBrand={brandDetails} page={page} />
       </Suspense>
     </div>
   );

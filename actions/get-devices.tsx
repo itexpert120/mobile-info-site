@@ -1,4 +1,4 @@
-import axios, { all } from "axios";
+import axios from "axios";
 import { getAllBrands } from "./get-brands";
 
 const baseURL =
@@ -16,13 +16,14 @@ export async function GetBrandDetails(
 }
 
 export async function GetBrandDevices(
-  brand_id: number,
+  filteredBrand: Brand,
   page: number = 1
 ): Promise<any | undefined> {
-  const allBrands = await getAllBrands();
-  const filteredBrand = allBrands.find(
-    (brand: Brand) => brand.brand_id === brand_id
-  );
+  // const allBrands = await getAllBrands();
+
+  // const filteredBrand = allBrands.find(
+  //   (brand: Brand) => brand.brand_id === brand_id
+  // );
 
   const { data: brandDevices } = await axios.post(baseURL, {
     route: "device-list-by-brand",

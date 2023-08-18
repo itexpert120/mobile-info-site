@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "@/components/footer";
 
+import NextTopLoader from "nextjs-toploader";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,7 +25,10 @@ export default function RootLayout({
       >
         <div className="flex flex-col min-h-screen min-w-full">
           <Header />
-          <div className="flex-1 container max-w-6xl">{children}</div>
+          <div className="flex-1 container max-w-6xl">
+            <NextTopLoader />
+            {children}
+          </div>
           <Footer />
         </div>
       </body>
