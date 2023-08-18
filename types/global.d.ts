@@ -25,4 +25,34 @@ declare global {
     device_image: string;
     key: string;
   }
+
+  interface MoreDetails {
+    title: string;
+    data: string[];
+  }
+
+  interface MoreSpecifications {
+    title: string;
+    data: MoreDetails[];
+  }
+
+  interface DeviceDetails {
+    key: string;
+    device_name: string;
+    device_image: string;
+    display_size: string;
+    display_res: string;
+    camera: string;
+    video: string;
+    ram: string;
+    chipset: string;
+    battery: string;
+    batteryType: string;
+    release_date: string;
+    body: string;
+    os_type: string;
+    storage: string;
+    comment: string;
+    more_specifications: MoreSpecifications[];
+  }
 }

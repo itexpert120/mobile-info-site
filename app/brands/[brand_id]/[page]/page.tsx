@@ -28,6 +28,7 @@ export default async function BrandDevicePage({
         showBackArrow
         back_url="/brands"
       />
+      <h2 className="font-semibold text-neutral-500 ml-8">Page: {page}</h2>
 
       <Suspense fallback={<AllDevicesSkeleton />}>
         <RenderAllDevices filteredBrand={brandDetails} page={page} />
