@@ -13,10 +13,10 @@ type Props = {
   params: { device_key: string };
 };
 
-export async function generateMetadata(
-  { params }: Props,
-  parent?: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: Props): // parent?: ResolvingMetadata
+Promise<Metadata> {
   const device_key = params.device_key;
 
   const deviceDetails = await getDeviceDetails(device_key);
