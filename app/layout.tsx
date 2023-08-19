@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "@/components/footer";
 
+import Script from "next/script";
+
 import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,6 +25,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2091112628494439"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
+      </head>
       <body
         className={`font-sans antialiased min-h-screen min-w-full ${inter.className}`}
       >
