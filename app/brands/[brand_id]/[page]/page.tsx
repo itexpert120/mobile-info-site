@@ -10,10 +10,10 @@ type Props = {
   params: { brand_id: string; page: string };
 };
 
-export async function generateMetadata(
-  { params }: Props,
-  parent?: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: Props): // parent?: ResolvingMetadata
+Promise<Metadata> {
   const brand_id = params.brand_id;
 
   const brandDetails = await GetBrandDetails(parseInt(brand_id));
