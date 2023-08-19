@@ -53,6 +53,8 @@ declare global {
     os_type: string;
     storage: string;
     comment: string;
-    more_specifications: MoreSpecifications[];
+    more_specification: MoreSpecifications[];
+    pictures: string[];
+    more_information: any;
   }
 }

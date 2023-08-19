@@ -1,8 +1,28 @@
-import { GetBrandDetails, GetBrandDevices } from "@/actions/get-devices";
+import type { Metadata, ResolvingMetadata } from "next";
+
+import { GetBrandDetails } from "@/actions/get-devices";
 import Heading from "@/components/heading";
 import RenderAllDevices from "@/components/ui/render-all-devices";
 import { Suspense } from "react";
 import { AllDevicesSkeleton } from "@/components/ui/all-devices-skeleton";
+
+type Props = {
+  params: { brand_id: string; page: string };
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent?: ResolvingMetadata
+): Promise<Metadata> {
+  const brand_id = params.brand_id;
+
+  const brandDetails = await GetBrandDetails(parseInt(brand_id));
+
+  return {
+    title: `${brandDetails?.brand_name} Devices | Page ${params.page}`,
+    description: `${brandDetails?.brand_name} All Devices`,
+  };
+}
 
 export default async function BrandDevicePage({
   params,
