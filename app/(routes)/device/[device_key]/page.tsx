@@ -1,4 +1,4 @@
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 import getDeviceDetails from "@/actions/get-device";
 import DeviceHeroDetails from "@/components/ui/device-hero-details";
@@ -20,6 +20,12 @@ Promise<Metadata> {
   const device_key = params.device_key;
 
   const deviceDetails = await getDeviceDetails(device_key);
+
+  if (!deviceDetails) {
+    return {
+      title: "Error",
+    };
+  }
 
   return {
     title: `${deviceDetails?.device_name} Specifications` || "Not Found",

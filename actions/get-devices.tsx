@@ -1,44 +1,76 @@
 import axios from "axios";
 import { getAllBrands } from "./get-brands";
+import { cache } from "react";
+
+export const revalidate = 3600;
 
 const baseURL =
   "https://script.google.com/macros/s/AKfycbxNu27V2Y2LuKUIQMK8lX1y0joB6YmG6hUwB1fNeVbgzEh22TcDGrOak03Fk3uBHmz-/exec";
 
-export async function getAllDevices(): Promise<BrandDevices[]> {
+// export async function getAllDevices(): Promise<BrandDevices[]> {
+//   const { data: allDevices } = await axios(
+//     "https://script.google.com/macros/s/AKfycbxNu27V2Y2LuKUIQMK8lX1y0joB6YmG6hUwB1fNeVbgzEh22TcDGrOak03Fk3uBHmz-/exec?route=device-list"
+//   );
+
+//   return allDevices.data;
+// }
+
+export const getAllDevices = cache(async (): Promise<BrandDevices[]> => {
   const { data: allDevices } = await axios(
     "https://script.google.com/macros/s/AKfycbxNu27V2Y2LuKUIQMK8lX1y0joB6YmG6hUwB1fNeVbgzEh22TcDGrOak03Fk3uBHmz-/exec?route=device-list"
   );
 
   return allDevices.data;
-}
+});
 
-export async function GetBrandDetails(
-  brand_id: number
-): Promise<Brand | undefined> {
-  const allBrands = await getAllBrands();
-  const filteredBrand = allBrands.find(
-    (brand: Brand) => brand.brand_id === brand_id
-  );
+// export async function GetBrandDetails(
+//   brand_id: number
+// ): Promise<Brand | undefined> {
+//   const allBrands = await getAllBrands();
+//   const filteredBrand = allBrands.find(
+//     (brand: Brand) => brand.brand_id === brand_id
+//   );
 
-  return filteredBrand;
-}
+//   return filteredBrand;
+// }
 
-export async function GetBrandDevices(
-  filteredBrand: Brand,
-  page: number = 1
-): Promise<any | undefined> {
-  // const allBrands = await getAllBrands();
+export const GetBrandDetails = cache(
+  async (brand_id: number): Promise<Brand | undefined> => {
+    const allBrands = await getAllBrands();
+    const filteredBrand = allBrands.find(
+      (brand: Brand) => brand.brand_id === brand_id
+    );
 
-  // const filteredBrand = allBrands.find(
-  //   (brand: Brand) => brand.brand_id === brand_id
-  // );
+    return filteredBrand;
+  }
+);
 
-  const { data: brandDevices } = await axios.post(baseURL, {
-    route: "device-list-by-brand",
-    brand_id: filteredBrand?.brand_id,
-    brand_name: filteredBrand?.brand_name,
-    page: page,
-  });
+// export async function GetBrandDevices(
+//   filteredBrand: Brand,
+//   page: number = 1
+// ): Promise<any | undefined> {
+//   const { data: brandDevices } = await axios.post(baseURL, {
+//     route: "device-list-by-brand",
+//     brand_id: filteredBrand?.brand_id,
+//     brand_name: filteredBrand?.brand_name,
+//     page: page,
+//   });
 
-  return brandDevices.data;
-}
+//   return brandDevices.data;
+// }
+
+export const GetBrandDevices = cache(
+  async (
+    filteredBrand: Brand,
+    page: number = 1
+  ): Promise<Brand | undefined> => {
+    const { data: brandDevices } = await axios.post(baseURL, {
+      route: "device-list-by-brand",
+      brand_id: filteredBrand?.brand_id,
+      brand_name: filteredBrand?.brand_name,
+      page: page,
+    });
+
+    return brandDevices.data;
+  }
+);
