@@ -8,7 +8,6 @@ import DevicePictures from "@/components/ui/device-pictures";
 import { Suspense } from "react";
 import RecommendedLoader from "@/components/ui/recommended-loader";
 import { RenderDevices } from "@/components/ui/render-devices";
-import { getAllDevices } from "@/actions/get-devices";
 
 type Props = {
   params: { device_key: string };
@@ -28,29 +27,30 @@ Promise<Metadata> {
   };
 }
 
-export async function generateStaticParams() {
-  const allDevices = await getAllDevices();
-  const device_keys_with_array = allDevices.map((brand) =>
-    brand.device_list.map((device) => ({
-      device_key: device.key,
-    }))
-  );
-
-  return device_keys_with_array.flat();
-}
-
 export default async function DevicePage({
   params,
 }: {
   params: { device_key: string };
 }) {
   const deviceDetails = await getDeviceDetails(params.device_key);
-  const moreInformation = Object.entries(deviceDetails.more_information);
+
+  if (!deviceDetails) {
+    return "Device Not Found";
+  }
+
+  const moreInformation =
+    Object.entries(deviceDetails?.more_information) || null;
+
   return (
     <div>
-      <Heading title={deviceDetails.device_name} showBackArrow />
+      <Heading
+        title={deviceDetails?.device_name || "Not Found"}
+        showBackArrow
+      />
       <DeviceHeroDetails deviceDetails={deviceDetails} />
-      <DeviceMoreDetails moreDetails={deviceDetails.more_specification} />
+      {moreInformation && (
+        <DeviceMoreDetails moreDetails={deviceDetails.more_specification} />
+      )}
       <DevicePictures pictures={deviceDetails.pictures} />
       {moreInformation.map(([key, value]) => (
         <div key={key} className="my-4">
