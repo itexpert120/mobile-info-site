@@ -57,4 +57,19 @@ declare global {
     pictures: string[];
     more_information: any;
   }
+
+  interface BrandDeviceList {
+    device_id: number;
+    device_name: string;
+    device_type: string;
+    device_image: string;
+    key: string;
+  }
+
+  interface BrandDevices {
+    brand_id: number;
+    brand_name: string;
+    key: string;
+    device_list: BrandDeviceList[];
+  }
 }

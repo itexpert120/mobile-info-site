@@ -4,6 +4,14 @@ import { getAllBrands } from "./get-brands";
 const baseURL =
   "https://script.google.com/macros/s/AKfycbxNu27V2Y2LuKUIQMK8lX1y0joB6YmG6hUwB1fNeVbgzEh22TcDGrOak03Fk3uBHmz-/exec";
 
+export async function getAllDevices(): Promise<BrandDevices[]> {
+  const { data: allDevices } = await axios(
+    "https://script.google.com/macros/s/AKfycbxNu27V2Y2LuKUIQMK8lX1y0joB6YmG6hUwB1fNeVbgzEh22TcDGrOak03Fk3uBHmz-/exec?route=device-list"
+  );
+
+  return allDevices.data;
+}
+
 export async function GetBrandDetails(
   brand_id: number
 ): Promise<Brand | undefined> {
