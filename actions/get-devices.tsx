@@ -60,10 +60,7 @@ export const GetBrandDetails = cache(
 // }
 
 export const GetBrandDevices = cache(
-  async (
-    filteredBrand: Brand,
-    page: number = 1
-  ): Promise<Brand | undefined> => {
+  async (filteredBrand: Brand, page: number = 1): Promise<any> => {
     const { data: brandDevices } = await axios.post(baseURL, {
       route: "device-list-by-brand",
       brand_id: filteredBrand?.brand_id,

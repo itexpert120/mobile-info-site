@@ -17,6 +17,7 @@ export default async function RenderAllDevices({
     filteredBrand,
     page
   );
+
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-row flex-wrap items-center gap-x-2 gap-y-4 md:gap-4 my-4">
