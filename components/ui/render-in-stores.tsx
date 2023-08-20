@@ -12,9 +12,11 @@ export async function RenderShelfDevices() {
       id="inshelf-devices-scroll"
       className="mx-auto max-w-full flex flex-row gap-4 overflow-auto"
     >
-      {shuffledItems.map((item: RecommendedDevice) => (
-        <DeviceBox item={item} key={item.key} />
-      ))}
+      {shuffledItems
+        ? shuffledItems.map((item: RecommendedDevice) => (
+            <DeviceBox item={item} key={item.key} />
+          ))
+        : "Error: Cannot Fetch"}
     </div>
   );
 }

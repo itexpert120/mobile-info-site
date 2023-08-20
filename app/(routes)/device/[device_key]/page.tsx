@@ -22,8 +22,8 @@ Promise<Metadata> {
   const deviceDetails = await getDeviceDetails(device_key);
 
   return {
-    title: `${deviceDetails.device_name} Specifications`,
-    description: `Specifications for ${deviceDetails.device_name}`,
+    title: `${deviceDetails?.device_name} Specifications` || "Not Found",
+    description: `Specifications for ${deviceDetails?.device_name}`,
   };
 }
 

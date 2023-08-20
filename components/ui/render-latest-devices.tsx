@@ -12,9 +12,11 @@ export async function RenderLatestDevices() {
       id="latest-devices-scroll"
       className="mx-auto max-w-full flex flex-row gap-4 overflow-auto"
     >
-      {shuffleItems.map((item: RecommendedDevice) => (
-        <DeviceBox item={item} key={item.key} />
-      ))}
+      {shuffleItems
+        ? shuffleItems.map((item: RecommendedDevice) => (
+            <DeviceBox item={item} key={item.key} />
+          ))
+        : "Error: Cannot fetch"}
     </div>
   );
 }
