@@ -11,14 +11,6 @@ type Props = {
   params: { brand_id: string; page: string };
 };
 
-export async function generateStaticParams() {
-  const allBrands = await getAllBrands();
-
-  return allBrands.map((brand) => ({
-    brand_id: brand.brand_id,
-  }));
-}
-
 export async function generateMetadata({
   params,
 }: Props): // parent?: ResolvingMetadata
