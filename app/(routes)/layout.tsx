@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   description: "A website for information on all smartphones and smart devices",
 };
 
+export const dynamic = "force-dynamic";
+export const revalidate = 5;
+
 export default function RootLayout({
   children,
 }: {

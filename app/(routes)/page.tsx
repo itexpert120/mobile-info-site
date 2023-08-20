@@ -3,8 +3,6 @@ import BrandsList from "@/components/brands-list";
 import Heading from "@/components/heading";
 import RecommendedDevices from "@/components/recommended-list";
 
-export const runtime = "edge";
-
 export default async function Home() {
   return (
     <main className="max-w-sm sm:max-w-6xl mx-auto">
