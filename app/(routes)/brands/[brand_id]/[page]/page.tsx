@@ -5,10 +5,19 @@ import Heading from "@/components/heading";
 import RenderAllDevices from "@/components/ui/render-all-devices";
 import { Suspense } from "react";
 import { AllDevicesSkeleton } from "@/components/ui/all-devices-skeleton";
+import { getAllBrands } from "@/actions/get-brands";
 
 type Props = {
   params: { brand_id: string; page: string };
 };
+
+export async function generateStaticParams() {
+  const allBrands = await getAllBrands();
+
+  return allBrands.map((brand) => ({
+    brand_id: brand.brand_id,
+  }));
+}
 
 export async function generateMetadata({
   params,
