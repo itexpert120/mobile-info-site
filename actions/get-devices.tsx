@@ -34,7 +34,7 @@ export const searchDevices = async (search_string: string): Promise<any> => {
   }) ?? [];
 
   const formattedDevices = searchedDevices.flat().filter(Boolean);
-  return formattedDevices.slice(0, 10);
+  return formattedDevices;
 };
 
 // export async function GetBrandDetails(
