@@ -16,17 +16,19 @@ export default function DeviceMoreDetails({
             <div className="md:basis-36 mr-2">
               <h2 className="font-bold text-xl">{item.title}</h2>
             </div>
-            <div className="border-b-4 md:border-b-0 md:border-l-4 w-full">
+            <div className="w-full">
               {item.data.map((itemData) => (
-                <div
-                  className="md:ml-4 flex items-center justify-start gap-x-4"
-                  key={itemData.title}
-                >
-                  <p>
-                    <span className="font-semibold">{itemData.title}:</span>{" "}
-                    {itemData.data}
-                  </p>
-                </div>
+                <>
+                  <div
+                    className="md:ml-4 flex items-center justify-start gap-x-4"
+                    key={itemData.title}
+                  >
+                    <p>
+                      <span className="font-semibold">{itemData.title}:</span>{" "}
+                      {itemData.data}
+                    </p>
+                  </div>
+                </>
               ))}
             </div>
           </div>

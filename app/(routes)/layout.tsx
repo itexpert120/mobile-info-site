@@ -1,12 +1,10 @@
-import Header from "@/components/header";
 import "@/app/globals.css";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Footer from "@/components/footer";
 
+import type { Metadata } from "next";
 import Script from "next/script";
 
-import NextTopLoader from "nextjs-toploader";
+import HomeLayout from "@/components/layouts/home";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,17 +34,8 @@ export default function RootLayout({
           strategy="lazyOnload"
         />
       </head>
-      <body
-        className={`font-sans antialiased min-h-screen min-w-full ${inter.className}`}
-      >
-        <div className="flex flex-col min-h-screen min-w-full">
-          <Header />
-          <div className="flex-1 container max-w-6xl">
-            <NextTopLoader />
-            {children}
-          </div>
-          <Footer />
-        </div>
+      <body className={`font-sans antialiased ${inter.className}`}>
+        <HomeLayout>{children}</HomeLayout>
       </body>
     </html>
   );

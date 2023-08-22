@@ -1,4 +1,7 @@
 // import Image from "next/image";
+"use client";
+
+import { Card, CardFooter, Image } from "@nextui-org/react";
 
 interface BannerProps {
   imgSrc: string;
@@ -6,15 +9,17 @@ interface BannerProps {
 
 export default function Banner({ imgSrc }: BannerProps) {
   return (
-    <div className="m-4 md:mr-4 rounded-md relative flex flex-col items-center mx-auto my-4 md:my-0">
-      <h1 className="z-50 absolute bottom-5 text-white font-bold text-xl sm:text-2xl md:text-3xl bg-black px-8 py-4 rounded-lg">
-        Latest Smartphone Info
-      </h1>
-      <img
+    <Card isFooterBlurred radius="lg" className="border-none">
+      <Image
+        alt="Woman listing to music"
+        className="object-cover aspect-video"
+        height={"auto"}
         src={imgSrc}
-        alt="iPhone 14"
-        className="w-[720px] h-auto rounded-md aspect-video object-cover shadow-md mx-auto md:mx-0"
+        width={720}
       />
-    </div>
+      <CardFooter className="justify-center before:bg-black/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+        <p className="text-3xl text-white/80">Latest Smartphone Info</p>
+      </CardFooter>
+    </Card>
   );
 }

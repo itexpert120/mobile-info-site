@@ -1,4 +1,7 @@
+"use client";
+
 import { FiCamera, FiCpu, FiInfo, FiSmartphone } from "react-icons/fi";
+import { Image } from "@nextui-org/react";
 
 interface DeviceHeroProps {
   deviceDetails: DeviceDetails;
@@ -8,7 +11,11 @@ export default function DeviceHeroDetails({ deviceDetails }: DeviceHeroProps) {
   return (
     <div className="flex flex-col md:flex-row items-center gap-y-4 md:gap-x-8 justify-center">
       <div className="basis-64">
-        <img src={deviceDetails.device_image} alt={deviceDetails.key} />
+        <Image
+          isBlurred
+          src={deviceDetails.device_image}
+          alt={deviceDetails.key}
+        />
       </div>
       <div className="grid grid-cols-2 gap-4">
         <div className="flex items-start">

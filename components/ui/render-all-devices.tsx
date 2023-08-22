@@ -1,8 +1,9 @@
 // import Image from "next/image";
 
 import { GetBrandDevices } from "@/actions/get-devices";
-import Pagination from "./pagination";
+// import Pagination from "./pagination";
 import { DeviceBox } from "./device-box";
+import NextPagination from "./next-pagination";
 
 interface RenderAllDevicesProps {
   filteredBrand: Brand;
@@ -30,7 +31,12 @@ export default async function RenderAllDevices({
         )}
       </div>
       <div className="my-4">
-        <Pagination
+        {/* <Pagination
+          total_page={total_page}
+          page={page}
+          brand_id={filteredBrand.brand_id}
+        /> */}
+        <NextPagination
           total_page={total_page}
           page={page}
           brand_id={filteredBrand.brand_id}

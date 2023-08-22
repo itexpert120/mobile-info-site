@@ -23,6 +23,20 @@ export const getAllDevices = cache(async (): Promise<BrandDevices[]> => {
   return allDevices.data;
 });
 
+export const searchDevices = async (search_string: string): Promise<any> => {
+  const allDevices = await getAllDevices();
+  const searchedDevices: any = [];
+
+  allDevices.map((brand) => {
+    brand.device_list.map((device) =>
+      searchedDevices.push(device.device_name.includes(search_string) && device)
+    );
+  }) ?? [];
+
+  const formattedDevices = searchedDevices.flat().filter(Boolean);
+  return formattedDevices.slice(0, 10);
+};
+
 // export async function GetBrandDetails(
 //   brand_id: number
 // ): Promise<Brand | undefined> {
