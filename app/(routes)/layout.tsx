@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import "@/app/globals.css";
 import { Inter } from "next/font/google";
 
@@ -36,6 +37,7 @@ export default function RootLayout({
       </head>
       <body className={`font-sans antialiased ${inter.className}`}>
         <HomeLayout>{children}</HomeLayout>
+        <Analytics />
       </body>
     </html>
   );
